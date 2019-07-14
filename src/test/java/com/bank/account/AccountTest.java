@@ -38,5 +38,27 @@ public class AccountTest {
 		//Then balance 500
 		assertEquals(500,  account.getAccountBalance());
 	}
+	
+	@Test(expected=BankAccountException.class)
+	public void should_return_exception_When_do_a_deposit_negative() throws BankAccountException{
+		//Given balance 0
+		account = new Account(1000, new ArrayList<Statement>());
+		
+		//When deposit -500
+		account.doOperation(OperationType.DEPOSIT, -500);
+		
+		//Then BankAccountException
+	}
+	
+	@Test(expected=BankAccountException.class)
+	public void should_return_exception_When_do_a_withdrawal_negative() throws BankAccountException{
+		//Given balance 0
+		account = new Account(2000, new ArrayList<Statement>());
+		
+		//When deposit 500
+		account.doOperation(OperationType.WITHDRAWAL, -1500);
+
+		//Then BankAccountException
+	}
 
 }
