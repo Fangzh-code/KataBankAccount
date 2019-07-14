@@ -1,8 +1,10 @@
 package com.bank.account;
 
+import java.util.Date;
 import java.util.List;
 
 import com.bank.account.exception.BankAccountException;
+import com.bank.account.operation.Operation;
 import com.bank.account.operation.OperationType;
 import com.bank.account.statement.Statement;
 
@@ -38,6 +40,7 @@ public class Account {
 			throw new BankAccountException("Negative amount");
 		}
 		
+		double oldBalance = accountBalance;
 		if (type == OperationType.DEPOSIT) {
 			accountBalance += amount;
 		} else if (type == OperationType.WITHDRAWAL) {
@@ -46,10 +49,10 @@ public class Account {
 			throw new BankAccountException("Illegal operation");
 		}
 		
-		saveOperationInHitory(type, amount);
+		saveOperationInHitory(type, amount, oldBalance);
 	}
 	
-	public void saveOperationInHitory(OperationType type, double amount) {
+	public void saveOperationInHitory(OperationType type, double amount, double oldBalance) {
 		
 	}
 }
