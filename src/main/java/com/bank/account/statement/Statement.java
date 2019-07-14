@@ -44,14 +44,14 @@ public class Statement {
 	public void print(PrintStream printer) {
 		StringBuilder builder = new StringBuilder();
 		
+		builder.append(operation.getDate() + " \n");
 		builder.append("Account do operation : ");
 		builder.append(operation.getType() + " ");
-		builder.append(operation.getAmount() + "\t");
-		builder.append(operation.getDate() + " \n");
+		builder.append(operation.getAmount() + "\n");
 		builder.append("Account balance from ");
 		builder.append(balanceBefore + " ");
 		builder.append("to ");
-		builder.append(balanceAfter + " \n\n");
+		builder.append(balanceAfter + " \n");
 		
 		printer.println(builder.toString());
 	}

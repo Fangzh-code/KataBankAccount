@@ -52,7 +52,15 @@ public class Account {
 		saveOperationInHitory(type, amount, oldBalance);
 	}
 	
-	public void saveOperationInHitory(OperationType type, double amount, double oldBalance) {
-		
+	public void saveOperationInHitory(OperationType type, double amount, double oldBalance) throws BankAccountException {
+		Operation operation = new Operation(type, new Date(), amount);
+		Statement statement = new Statement(oldBalance, operation);
+		history.add(statement);
+	}
+	
+	public void historyPrint() {
+		for (Statement statement : history) {
+			statement.print(System.out);
+		}
 	}
 }

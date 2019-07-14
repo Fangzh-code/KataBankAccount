@@ -90,5 +90,20 @@ public class AccountTest {
 		Statement statement = new Statement(6666, operation);
 		assertEquals(true, account.getHistory().contains(statement));
 	}
+	
+	@Test
+	public void should_print_all_statement_when_call_print() throws BankAccountException {
+		//Given
+		account = new Account(6666, new ArrayList<Statement>());
+		
+		//When 
+		account.doOperation(OperationType.WITHDRAWAL, 1500);
+		account.doOperation(OperationType.WITHDRAWAL, 500);
+		account.doOperation(OperationType.DEPOSIT, 2500);
+		account.doOperation(OperationType.WITHDRAWAL, 3500);
+		
+		//Then
+		account.historyPrint();
+	}
 
 }
